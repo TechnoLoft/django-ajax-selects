@@ -1,9 +1,5 @@
-# -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
 from django import forms
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 
 from ajax_select.fields import AutoCompleteField
 
@@ -18,10 +14,10 @@ class SearchForm(forms.Form):
 
 
 def search_form(request):
-    dd = {}
+    context = {}
     if 'q' in request.GET:
-        dd['entered'] = request.GET.get('q')
+        context['entered'] = request.GET.get('q')
     initial = {'q': "\"This is an initial value,\" said O'Leary."}
     form = SearchForm(initial=initial)
-    dd['form'] = form
-    return render_to_response('search_form.html', dd, context_instance=RequestContext(request))
+    context['form'] = form
+    return render(request, 'search_form.html', context)

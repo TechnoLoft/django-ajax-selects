@@ -4,6 +4,8 @@ from django.utils.encoding import force_text
 from django.utils.text import capfirst
 from django.utils.translation import ugettext_lazy as _
 
+from ajax_select.fields import AutoCompleteField, AutoCompleteSelectField, AutoCompleteSelectMultipleField
+
 
 def make_ajax_form(model, fieldlist, superclass=ModelForm, show_help_text=False, **kwargs):
     """Creates a ModelForm subclass with AutoComplete fields.
@@ -35,10 +37,6 @@ def make_ajax_form(model, fieldlist, superclass=ModelForm, show_help_text=False,
     and 'author' is a ForeignKeyField specifying here to also use the same lookup channel 'contact'
 
     """
-    # will support previous arg name for several versions before deprecating
-    # TODO: time to go
-    if 'show_m2m_help' in kwargs:
-        show_help_text = kwargs.pop('show_m2m_help')
 
     class TheForm(superclass):
 
@@ -83,9 +81,6 @@ def make_ajax_field(related_model, fieldname_on_model, channel, show_help_text=F
     Returns:
         (AutoCompleteField, AutoCompleteSelectField, AutoCompleteSelectMultipleField): field
     """
-    from ajax_select.fields import AutoCompleteField, \
-        AutoCompleteSelectMultipleField, \
-        AutoCompleteSelectField
 
     field = related_model._meta.get_field(fieldname_on_model)
     if 'label' not in kwargs:

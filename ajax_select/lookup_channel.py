@@ -3,7 +3,7 @@ from django.utils.encoding import force_text
 from django.utils.html import escape
 
 
-class LookupChannel(object):
+class LookupChannel:
     """
     Subclass this, setting the model and implementing methods to taste.
 
@@ -40,7 +40,7 @@ class LookupChannel(object):
         Returns:
             (QuerySet, list, generator): iterable of related_models
         """
-        kwargs = {"%s__icontains" % self.search_field: q}
+        kwargs = {f"{self.search_field}__icontains": q}
         return self.model.objects.filter(**kwargs).order_by(self.search_field)
 
     def get_result(self, obj):
@@ -123,7 +123,7 @@ class LookupChannel(object):
         """
         from django.contrib.contenttypes.models import ContentType
         ctype = ContentType.objects.get_for_model(other_model)
-        return user.has_perm("%s.add_%s" % (ctype.app_label, ctype.model))
+        return user.has_perm(f"{ctype.app_label}.add_{ctype.model}")
 
     def check_auth(self, request):
         """

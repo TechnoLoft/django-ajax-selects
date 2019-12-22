@@ -1,4 +1,8 @@
 # Change Log
+## [2.0.0]  IN PROGRESS
+
+**Breaking Changes**
+Remove support for Django<2.2 and Python<3.6
 
 ## [1.6.1](https://github.com/crucialfelix/django-ajax-selects/tree/1.6.1) (2017-09-09)
 [Full Changelog](https://github.com/crucialfelix/django-ajax-selects/compare/1.6.0...1.6.1)

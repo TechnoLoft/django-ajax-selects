@@ -1,4 +1,4 @@
-(function(w) {
+(function (w) {
   /**
    * load jquery and jquery-ui if needed
    */

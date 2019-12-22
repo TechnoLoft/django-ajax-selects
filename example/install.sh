@@ -17,8 +17,8 @@ else
 fi
 
 if [ ! -d ./ajax_select ]; then
-	echo "\nSymlinking ajax_select into this app directory:"
-	ln -s ../ajax_select/ ./ajax_select
+  echo "\nSymlinking ajax_select into this app directory:"
+  ln -s ../ajax_select/ ./ajax_select
 fi
 
 echo

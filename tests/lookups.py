@@ -21,10 +21,10 @@ class PersonLookup(ajax_select.LookupChannel):
         return obj.name
 
     def format_match(self, obj):
-        return "%s<div><i>%s</i></div>" % (escape(obj.name), escape(obj.email))
+        return f"{escape(obj.name)}<div><i>{escape(obj.email)}</i></div>"
 
     def format_item_display(self, obj):
-        return "%s<div><i>%s</i></div>" % (escape(obj.name), escape(obj.email))
+        return f"{escape(obj.name)}<div><i>{escape(obj.email)}</i></div>"
 
 
 @ajax_select.register('person-with-title')

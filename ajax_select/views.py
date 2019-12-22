@@ -21,11 +21,11 @@ def ajax_lookup(request, channel):
     if request.method == "GET":
         # we could also insist on an ajax request
         if 'term' not in request.GET:
-            return HttpResponse('')
+            return HttpResponse()
         query = request.GET['term']
     else:
         if 'term' not in request.POST:
-            return HttpResponse('')  # suspicious
+            return HttpResponse()  # suspicious
         query = request.POST['term']
 
     lookup = registry.get(channel)
