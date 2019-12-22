@@ -11,8 +11,8 @@ env:
   - TOX_ENV=py37-dj22
   - TOX_ENV=py37-dj30
 before_install:
-  - pyenv install 3.6 --skip-existing
-  - pyenv install 3.7 --skip-existing
+  - pyenv install 3.6.9 --skip-existing
+  - pyenv install 3.7.5 --skip-existing
   - pyenv global system 3.7
 install:
   - pip install -r requirements-test.txt
